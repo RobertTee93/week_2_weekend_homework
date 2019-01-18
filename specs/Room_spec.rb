@@ -56,7 +56,7 @@ class TestRoom < MiniTest::Test
     @room1.add_guest(@guest2)
     @room1.add_guest(@guest3)
     result = @room1.is_not_full?()
-    assert_equal(false, result)
+    assert_equal(true, result)
   end
 
 
