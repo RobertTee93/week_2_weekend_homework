@@ -68,6 +68,11 @@ class TestBar < MiniTest::Test
     assert_equal(false, @bar.can_afford?(@guest6))
   end
 
+  def test_bar_can_add_song_to_rooms
+    @bar.add_song_to_room(@room1, @song1)
+    assert_equal(1, @room1.songs.length)
+  end
+
 
 
 

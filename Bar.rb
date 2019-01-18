@@ -30,4 +30,8 @@ class Bar
     guest.wallet >= @entrance_fee
   end
 
+  def add_song_to_room(room, song)
+    room.add_song(song)
+  end
+
 end
