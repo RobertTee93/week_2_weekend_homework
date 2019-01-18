@@ -8,10 +8,13 @@ require_relative("../Bar")
 class TestBar < MiniTest::Test
 
   def setup
-    @guest1 = Guest.new("Robert")
-    @guest2 = Guest.new("Stuart")
-    @guest3 = Guest.new("Kyle")
-    @guests = [@guest1, @guest2, @guest3]
+    @guest1 = Guest.new("Robert", 50)
+    @guest2 = Guest.new("Stuart", 75)
+    @guest3 = Guest.new("Kyle", 35)
+    @guest4 = Guest.new("James", 50)
+    @guest5 = Guest.new("Eloise", 75)
+    @guest6 = Guest.new("Heather", 4)
+    @guests = [@guest1, @guest2, @guest3, @guest4, @guest5, @guest6]
     @song1 = Song.new("Hooked on a Feeling")
     @song2 = Song.new("Uptown Funk")
     @song3 = Song.new("Shape of You")
@@ -21,7 +24,7 @@ class TestBar < MiniTest::Test
     @room3 = Room.new("Hip Hop", 25)
     @room4 = Room.new("Jazz", 1)
     @rooms = [@room1, @room2, @room3, @room4]
-    @bar = Bar.new("CodeClan Caraoke", @rooms, @guests, @songs)
+    @bar = Bar.new("CodeClan Caraoke", @rooms, @guests, @songs, 75)
   end
 
   def test_bar_has_name
@@ -29,7 +32,7 @@ class TestBar < MiniTest::Test
   end
 
   def test_bar_has_guests_in_queue
-    assert_equal(3, @bar.queue.length)
+    assert_equal(6, @bar.queue.length)
   end
 
   def test_bar_has_songs
@@ -40,7 +43,7 @@ class TestBar < MiniTest::Test
     @bar.check_in(@room1)
     @bar.check_in(@room2)
     @bar.check_in(@room2)
-    assert_equal(0, @bar.queue.length)
+    assert_equal(3, @bar.queue.length)
     assert_equal(1, @room1.guests.length)
     assert_equal(2, @room2.guests.length)
   end
@@ -48,15 +51,15 @@ class TestBar < MiniTest::Test
   def test_bar_can_check_in_guests__if_room_full_move_to_back_of_queue
     @bar.check_in(@room4)
     assert_equal("Sorry room is full!", @bar.check_in(@room4))
-    assert_equal(2, @bar.queue.length)
-    assert_equal([@guest3, @guest2], @bar.queue)
+    assert_equal(5, @bar.queue.length)
+    assert_equal([@guest3, @guest4, @guest5, @guest6, @guest2], @bar.queue)
   end
 
   def test_bar_can_check_out_guests
     @bar.check_in(@room1)
     @bar.check_in(@room1)
     @bar.check_out(@room1, @guest1)
-    assert_equal(1, @bar.queue.length)
+    assert_equal(4, @bar.queue.length)
     assert_equal(1, @room1.guests.length)
   end
 
