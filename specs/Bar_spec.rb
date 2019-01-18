@@ -24,7 +24,7 @@ class TestBar < MiniTest::Test
     @room3 = Room.new("Hip Hop", 25)
     @room4 = Room.new("Jazz", 1)
     @rooms = [@room1, @room2, @room3, @room4]
-    @bar = Bar.new("CodeClan Caraoke", @rooms, @guests, @songs, 75, 300)
+    @bar = Bar.new("CodeClan Caraoke", @rooms, @guests, @songs, 5, 300)
   end
 
   def test_bar_has_name
@@ -61,6 +61,11 @@ class TestBar < MiniTest::Test
     @bar.check_out(@room1, @guest1)
     assert_equal(4, @bar.queue.length)
     assert_equal(1, @room1.guests.length)
+  end
+
+  def test_check_guest_can_afford
+    assert_equal(true, @bar.can_afford?(@guest1))
+    assert_equal(false, @bar.can_afford?(@guest6))
   end
 
 

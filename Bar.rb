@@ -13,18 +13,21 @@ class Bar
   end
 
   def check_in(room)
-    if room.is_not_full?()
-      guest = @queue.shift()
-      room.add_guest(guest)
+    guest = @queue.first()
+    if room.is_not_full?() && can_afford?(guest)
+      room.add_guest(@queue.shift())
     else
       @queue.rotate!()
     end
     return "Sorry room is full!"
   end
 
-
   def check_out(room, guest)
     room.remove_guest(guest)
+  end
+
+  def can_afford?(guest)
+    guest.wallet >= @entrance_fee
   end
 
 end
