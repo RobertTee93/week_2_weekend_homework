@@ -24,7 +24,7 @@ class TestBar < MiniTest::Test
     @room3 = Room.new("Hip Hop", 25)
     @room4 = Room.new("Jazz", 1)
     @rooms = [@room1, @room2, @room3, @room4]
-    @bar = Bar.new("CodeClan Caraoke", @rooms, @guests, @songs, 75)
+    @bar = Bar.new("CodeClan Caraoke", @rooms, @guests, @songs, 75, 300)
   end
 
   def test_bar_has_name
