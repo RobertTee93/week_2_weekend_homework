@@ -45,10 +45,11 @@ class TestBar < MiniTest::Test
     assert_equal(2, @room2.guests.length)
   end
 
-  def test_bar_can_check_in_guests__if_room_full
+  def test_bar_can_check_in_guests__if_room_full_move_to_back_of_queue
     @bar.check_in(@room4)
     assert_equal("Sorry room is full!", @bar.check_in(@room4))
     assert_equal(2, @bar.queue.length)
+    assert_equal([@guest3, @guest2], @bar.queue)
   end
 
   def test_bar_can_check_out_guests

@@ -15,6 +15,8 @@ class Bar
     if room.is_not_full?()
       guest = @queue.shift()
       room.add_guest(guest)
+    else
+      @queue.rotate!()
     end
     return "Sorry room is full!"
   end
