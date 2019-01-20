@@ -8,12 +8,12 @@ require_relative("../Bar")
 class TestBar < MiniTest::Test
 
   def setup
-    @guest1 = Guest.new("Robert", 50)
-    @guest2 = Guest.new("Stuart", 75)
-    @guest3 = Guest.new("Kyle", 35)
-    @guest4 = Guest.new("James", 50)
-    @guest5 = Guest.new("Eloise", 75)
-    @guest6 = Guest.new("Heather", 4)
+    @guest1 = Guest.new("Robert", 50, "Hooked on a feeling")
+    @guest2 = Guest.new("Stuart", 75, "Closer")
+    @guest3 = Guest.new("Kyle", 35, "Sunflower")
+    @guest4 = Guest.new("James", 50, "Youngblood")
+    @guest5 = Guest.new("Eloise", 75, "Decpacito")
+    @guest6 = Guest.new("Heather", 4, "Uptown Funk")
     @guests = [@guest1, @guest2, @guest3, @guest4, @guest5, @guest6]
     @song1 = Song.new("Hooked on a Feeling")
     @song2 = Song.new("Uptown Funk")

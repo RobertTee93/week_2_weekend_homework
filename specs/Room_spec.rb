@@ -7,9 +7,9 @@ require_relative("../Song")
 class TestRoom < MiniTest::Test
 
   def setup
-    @guest1 = Guest.new("Robert")
-    @guest2 = Guest.new("Stuart")
-    @guest3 = Guest.new("Kyle")
+    @guest1 = Guest.new("Robert", 50, "Lose Yourself")
+    @guest2 = Guest.new("Stuart", 120, "Uptown Funk")
+    @guest3 = Guest.new("Kyle", 70, "Hooked on a Feeling")
     @song1 = Song.new("Hooked on a Feeling")
     @room1 = Room.new("Pop", 50)
     @room2 = Room.new("Rock", 30)
